@@ -1,4 +1,4 @@
-package com.mlg.bottomnavigationbarcompose.screen
+package com.mlg.bottomnavigationbarcompose.screen.screens
 
 
 import androidx.compose.foundation.background
@@ -9,14 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 
 @Composable
-fun SettingsScreen(){
+fun HomeScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(androidx.compose.ui.graphics.Color.Green),
+            .background(androidx.compose.ui.graphics.Color.Magenta),
         contentAlignment = Alignment.Center
     ) {
 //        Text(
@@ -25,8 +24,10 @@ fun SettingsScreen(){
 //            fontWeight = FontWeight.Bold,
 //            color = androidx.compose.ui.graphics.Color.White
 //        )
-
-        Text(text = "Settings" , fontSize = 25.sp )
+        Text(text = "Home" , fontSize = 25.sp )
     }
+
+
+
 
 }
