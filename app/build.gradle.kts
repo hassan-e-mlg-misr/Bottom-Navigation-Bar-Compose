@@ -93,5 +93,7 @@ dependencies {
 
     implementation("com.canopas.intro-showcase-view:introshowcaseview:2.0.1")
 
+   // implementation("com.google.accompanist:accompanist-tooltip:v0.36.0")
+
 
 }

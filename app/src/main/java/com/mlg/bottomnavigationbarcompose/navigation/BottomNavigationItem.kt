@@ -19,7 +19,6 @@ data class BottomNavigationItem(
 ) {
     //function to get the list of bottomNavigationItems
     fun bottomNavigationItems(): List<BottomNavigationItem> {
-
         val itemsList: List<BottomNavigationItem> = listOf(
             BottomNavigationItem(
                 label = "Home",
