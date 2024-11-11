@@ -48,47 +48,29 @@ fun BottomNavigationBar() {
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
             NavigationBar(tonalElevation = 18.dp) {
-                BottomNavigationItem().bottomNavigationItems().forEachIndexed { index, navigationItem ->
-                    val tooltipState = rememberTooltipState()
-                    val showTooltip = remember { mutableStateOf(false) }
-
-                    TooltipBox(
-                        tooltip = {Text(text = navigationItem.label)},
-                        state = tooltipState,
-                        positionProvider =   TooltipDefaults.rememberTooltipPositionProvider(),
-                        content = {
-                            NavigationBarItem(
-                                selected = index == navigationSelectedItem,
-                                label = { Text(navigationItem.label) },
-                                icon = {
-                                    Icon(
-                                        navigationItem.icon,
-                                        contentDescription = navigationItem.label
-                                    )
-                                },
-                                onClick = {
-                                    navigationSelectedItem = index
-                                    navController.navigate(navigationItem.route) {
-                                        popUpTo(navController.graph.findStartDestination().id) {
-                                            saveState = true
-                                        }
-                                        launchSingleTop = true
-                                        restoreState = true
+                BottomNavigationItem().bottomNavigationItems()
+                    .forEachIndexed { index, navigationItem ->
+                        NavigationBarItem(
+                            selected = index == navigationSelectedItem,
+                            label = { Text(navigationItem.label) },
+                            icon = {
+                                Icon(
+                                    navigationItem.icon,
+                                    contentDescription = navigationItem.label
+                                )
+                            },
+                            onClick = {
+                                navigationSelectedItem = index
+                                navController.navigate(navigationItem.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
                                     }
-                                    showTooltip.value = true
-                                },
-                                modifier = Modifier.onGloballyPositioned {
-                                    if (showTooltip.value) {
-                                        LaunchedEffect(Unit) {
-                                            tooltipState.show()
-                                            showTooltip.value = false
-                                        }
-                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
                                 }
-                            )
-                        }
-                    )
-                }
+                            }
+                        )
+                    }
             }
         }
     ) { paddingValues ->
